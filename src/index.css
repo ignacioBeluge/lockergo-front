@@ -967,7 +967,15 @@ details.detalle > summary {
 
 .validando {
   text-align: center;
-  padding: 1rem 0;
+  padding-top: 1.5rem;
+}
+
+/* El detalle del retiro no hereda el centrado del estado "Validando…". */
+.validando .datos {
+  text-align: left;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borde);
 }
 
 .validando .spinner {
