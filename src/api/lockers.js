@@ -17,6 +17,11 @@ export function listarCompartimentos(lockerId, opciones) {
   return pedir('lockers', `/v1/lockers/${lockerId}/compartimentos`, { auth: 'ninguna', ...opciones })
 }
 
+/** GET /v1/compartimentos/{id} -> { id, lockerId, tamano, estado } */
+export function obtenerCompartimento(compartimentoId, opciones) {
+  return pedir('lockers', `/v1/compartimentos/${compartimentoId}`, { auth: 'ninguna', ...opciones })
+}
+
 /** POST /v1/lockers (admin) */
 export function crearLocker(basic, { nombre, direccion, zona }) {
   return pedir('lockers', '/v1/lockers', { metodo: 'POST', cuerpo: { nombre, direccion, zona }, auth: 'basic', basic })
