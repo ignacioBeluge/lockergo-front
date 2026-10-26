@@ -1030,3 +1030,11 @@ details.detalle > summary {
   margin: 0.75rem 0 0;
   white-space: pre-wrap;
 }
+
+.nota-pie {
+  margin: 1rem 0 0;
+}
+
+.opciones-tipo {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+}
