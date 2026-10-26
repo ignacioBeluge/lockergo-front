@@ -1,10 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lockergo-front</title>
+    <meta name="description" content="LockerGo: reservá un locker, confirmá y retirá tu paquete con un código." />
+    <title>LockerGo</title>
+    <script>
+      // Aplica el tema elegido antes del primer render (evita el flash). Sin
+      // eleccion guardada, el CSS sigue prefers-color-scheme.
+      try {
+        var tema = localStorage.getItem('lockergo.tema')
+        if (tema === 'oscuro') document.documentElement.dataset.theme = 'dark'
+        if (tema === 'claro') document.documentElement.dataset.theme = 'light'
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
