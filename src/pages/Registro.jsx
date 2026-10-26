@@ -34,7 +34,9 @@ export default function Registro() {
         password: datos.password,
         tipo: datos.tipo,
       })
-      navigate('/login', { state: { email: usuario.email, aviso: `Cuenta creada, ${usuario.nombre}. Ya podés ingresar.` } })
+      navigate('/login', {
+        state: { email: usuario.email, aviso: `Cuenta creada, ${usuario.nombre}. Ya podés ingresar.`, tipoAviso: 'exito' },
+      })
     } catch (e) {
       // 409: el email ya esta registrado. Se marca en el campo ademas del aviso general.
       setErrores(e.status === 409 ? { email: 'Este email ya está registrado.' } : (e.errores ?? {}))

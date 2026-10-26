@@ -63,10 +63,12 @@ function restaurar() {
       programarVencimiento()
     } else {
       sessionStorage.removeItem(CLAVE)
+      sessionStorage.removeItem(CLAVE_ULTIMA_RESERVA)
       motivoCierre = 'vencida'
     }
   } catch {
     sessionStorage.removeItem(CLAVE)
+    sessionStorage.removeItem(CLAVE_ULTIMA_RESERVA)
   }
 }
 

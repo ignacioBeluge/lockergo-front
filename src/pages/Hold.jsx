@@ -209,7 +209,8 @@ export default function Hold() {
       </section>
       <section className="tarjeta">
         <h2>Detalle</h2>
-        <DatosReserva reserva={reserva} locker={locker} />
+        {/* Reservas expira los holds con un job cada 30 s: en 0 se muestra EXPIRADA aunque todavia figure ACTIVA. */}
+        <DatosReserva reserva={expirado ? { ...reserva, estado: 'EXPIRADA' } : reserva} locker={locker} />
       </section>
     </div>
   )

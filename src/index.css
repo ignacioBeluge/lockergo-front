@@ -242,7 +242,7 @@ a {
   white-space: nowrap;
 }
 
-.menu-boton {
+.boton-icono.menu-boton {
   display: none;
 }
 
@@ -263,7 +263,7 @@ a {
 }
 
 @media (max-width: 767px) {
-  .menu-boton {
+  .boton-icono.menu-boton {
     display: inline-grid;
   }
 
@@ -1045,4 +1045,9 @@ details.detalle > summary {
 
 .resultado-encabezado {
   padding: 0.5rem 0 1rem;
+}
+
+.grilla > .tarjeta,
+.dos-columnas > .tarjeta {
+  margin-top: 0;
 }

@@ -38,9 +38,18 @@ async function reservarAlguno({ lockerId, candidatos, tamano, horas, alIntentar 
   throw new ApiError({ status: 409, titulo: 'Sin disponibilidad', detalle: SIN_LIBRES })
 }
 
+/**
+ * Si se navega de un locker a otro, React Router reutiliza el componente: la
+ * key fuerza un formulario nuevo para que el tamano elegido no quede viejo.
+ */
 export default function Reservar() {
   const { lockerId } = useParams()
   const [parametros] = useSearchParams()
+  const tamanoInicial = TAMANOS.includes(parametros.get('tamano')) ? parametros.get('tamano') : 'CHICO'
+  return <FormularioReserva key={`${lockerId}-${tamanoInicial}`} lockerId={lockerId} tamanoInicial={tamanoInicial} />
+}
+
+function FormularioReserva({ lockerId, tamanoInicial }) {
   const navigate = useNavigate()
 
   const cargar = useCallback(
@@ -55,7 +64,7 @@ export default function Reservar() {
   )
   const { cargando, datos, error, recargar } = useCarga(cargar)
 
-  const [tamano, setTamano] = useState(TAMANOS.includes(parametros.get('tamano')) ? parametros.get('tamano') : 'CHICO')
+  const [tamano, setTamano] = useState(tamanoInicial)
   const [horasTexto, setHorasTexto] = useState('3')
   const [errorHoras, setErrorHoras] = useState(null)
   const [enviando, setEnviando] = useState(false)

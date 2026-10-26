@@ -36,7 +36,7 @@ function TarjetaLocker({ locker }) {
               <div key={t} className={`tamano ${resumen[t].libres > 0 ? 'tamano-libre' : 'tamano-agotado'}`}>
                 <div className="tamano-nombre">{t}</div>
                 <div className="tamano-cantidad">{resumen[t].libres}</div>
-                <small className="texto-suave">de {resumen[t].total} libres</small>
+                <small className="texto-suave">libres de {resumen[t].total}</small>
               </div>
             ))}
           </div>
@@ -75,7 +75,7 @@ export default function Lockers() {
   // Las zonas salen de todos los lockers: el backend filtra por zona exacta
   // y no tiene un endpoint que las liste.
   const cargarZonas = useCallback(
-    (signal) => listarLockers({ tamanio: 100, orden: 'zona' }, { signal }).then((r) => [...new Set(r.datos.map((l) => l.zona))]),
+    (signal) => listarLockers({ tamanio: 100, orden: 'zona' }, { signal }).then((r) => [...new Set(r.datos.map((l) => l.zona))].sort((a, b) => a.localeCompare(b, 'es'))),
     [],
   )
   const zonas = useCarga(cargarZonas)
@@ -121,7 +121,7 @@ export default function Lockers() {
           Actualizar
         </button>
       </div>
-      {zonas.error && <ErrorCarga error={zonas.error} onReintentar={zonas.recargar} titulo="No se pudieron cargar las zonas" />}
+      {zonas.error && !error && <ErrorCarga error={zonas.error} onReintentar={zonas.recargar} titulo="No se pudieron cargar las zonas" />}
 
       {cargando && !datos ? (
         <Cargando texto="Buscando lockers…" />

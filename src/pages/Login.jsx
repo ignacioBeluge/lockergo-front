@@ -51,7 +51,7 @@ export default function Login() {
     <section className="tarjeta centrado">
       <h1>Ingresar</h1>
       <p className="texto-suave">Reservá un locker y retirá tu paquete con un código.</p>
-      {aviso && <Alerta tipo="aviso">{aviso}</Alerta>}
+      {aviso && !error && <Alerta tipo={location.state?.tipoAviso ?? 'aviso'}>{aviso}</Alerta>}
       <ErrorEnvio error={error} />
       <form className="formulario" onSubmit={enviar} noValidate>
         <Campo
