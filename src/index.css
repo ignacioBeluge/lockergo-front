@@ -1042,3 +1042,7 @@ details.detalle > summary {
 .paginacion-texto {
   align-self: center;
 }
+
+.resultado-encabezado {
+  padding: 0.5rem 0 1rem;
+}
